@@ -16,7 +16,7 @@ public class Paciente {
     public double calcularPesoIdeal() {
         if (sexo.equalsIgnoreCase("M")) {
             return (72.7 * altura) - 58;
-        } else {
+        } else  {
             return (62.1 * altura) - 44.7;
         }
     }

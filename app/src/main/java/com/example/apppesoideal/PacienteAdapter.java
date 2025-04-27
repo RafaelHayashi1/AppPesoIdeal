@@ -36,12 +36,8 @@ public class PacienteAdapter extends ArrayAdapter<Paciente> {
 
         nome.setText(paciente.getNome());
         pesoAtual.setText(String.format("%.1f", paciente.getPeso()));
-        
-        // Calcular peso ideal
         double pesoIdealValor = paciente.calcularPesoIdeal();
         pesoIdeal.setText(String.format("%.1f", pesoIdealValor));
-
-        // Clique no card para abrir detalhes
         convertView.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), DetalhePacienteActivity.class);
             intent.putExtra("nome", paciente.getNome());
