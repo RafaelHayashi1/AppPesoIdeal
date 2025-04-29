@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
-import com.example.apppesoideal.data.PacienteDbHelper;
+import com.example.apppesoideal.db.DBHelper;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 
@@ -22,10 +22,7 @@ public class AdicionarPacienteActivity extends AppCompatActivity {
         EditText editPeso = findViewById(R.id.editTextPeso);
         Button btnSalvar = findViewById(R.id.btnSalvarPaciente);
         Spinner spinnerSexo = findViewById(R.id.spinnerSexo);
-
-        ArrayAdapter<String> sexoAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"M", "F"});
-        sexoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSexo.setAdapter(sexoAdapter);
+        
 
         btnSalvar.setOnClickListener(v -> {
             String nome = editNome.getText().toString().trim();
@@ -41,7 +38,7 @@ public class AdicionarPacienteActivity extends AppCompatActivity {
             double altura = Double.parseDouble(alturaStr);
             double peso = Double.parseDouble(pesoStr);
 
-            PacienteDbHelper dbHelper = new PacienteDbHelper(this);
+            DBHelper dbHelper = new DBHelper(this);
             SQLiteDatabase db = dbHelper.getWritableDatabase();
 
             ContentValues values = new ContentValues();

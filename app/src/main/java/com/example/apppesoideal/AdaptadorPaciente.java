@@ -8,24 +8,24 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.apppesoideal.model.Paciente;
+import com.example.apppesoideal.modelos.Paciente;
 
 import java.util.List;
 
-public class PacienteAdapter extends ArrayAdapter<Paciente> {
+public class AdaptadorPaciente extends ArrayAdapter<Paciente> {
     
-    private int resourceLayout;
+    private int layoutPaciente ;
 
-    public PacienteAdapter(Context context, int resource, List<Paciente> items) {
+    public AdaptadorPaciente(Context context, int resource, List<Paciente> items) {
         super(context, resource, items);
-        this.resourceLayout = resource;
+        this.layoutPaciente  = resource;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext())
-                    .inflate(resourceLayout, parent, false);
+                    .inflate(layoutPaciente , parent, false);
         }
 
         Paciente paciente = getItem(position);

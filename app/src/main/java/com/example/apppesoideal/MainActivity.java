@@ -1,30 +1,38 @@
 package com.example.apppesoideal;
 
-import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import android.widget.ListView;
 import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.apppesoideal.dao.PacienteDAO;
+import com.example.apppesoideal.modelos.Paciente;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import com.example.apppesoideal.model.Paciente;
-import com.example.apppesoideal.data.PacienteDbHelper;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Paciente> pacientes;
-    private PacienteAdapter adapter;
+    private List<Paciente> pacientes;
+    private AdaptadorPaciente adapter;
+    private PacienteDAO pacienteDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        PacienteDbHelper dbHelper = new PacienteDbHelper(this);
-        pacientes = new ArrayList<>(dbHelper.getAllPacientes());
-        adapter = new PacienteAdapter(this, R.layout.item_paciente, pacientes);
+
+        pacienteDAO = new PacienteDAO(this);
+        pacienteDAO.Abrir();
+
+        pacientes = new ArrayList<>(pacienteDAO.ListarPacientes());
+
+        adapter = new AdaptadorPaciente(this, R.layout.item_paciente, pacientes);
         ListView listView = findViewById(R.id.listViewPacientes);
         listView.setAdapter(adapter);
+
         FloatingActionButton fab = findViewById(R.id.fabAddPaciente);
         fab.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, AdicionarPacienteActivity.class);
@@ -35,9 +43,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        PacienteDbHelper dbHelper = new PacienteDbHelper(this);
         pacientes.clear();
-        pacientes.addAll(dbHelper.getAllPacientes());
+        pacientes.addAll(pacienteDAO.ListarPacientes());
         adapter.notifyDataSetChanged();
     }
 }

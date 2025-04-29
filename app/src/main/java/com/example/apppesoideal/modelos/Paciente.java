@@ -1,4 +1,4 @@
-package com.example.apppesoideal.model;
+package com.example.apppesoideal.modelos;
 
 public class Paciente {
     private String nome;
@@ -14,10 +14,13 @@ public class Paciente {
     }
 
     public double calcularPesoIdeal() {
-        if (sexo.equalsIgnoreCase("M")) {
-            return (72.7 * altura) - 58;
-        } else  {
-            return (62.1 * altura) - 44.7;
+        switch (sexo){
+            case "M":
+                return (72.7 * altura) - 58;
+            case "F":
+                return (62.1 * altura) - 44.7;
+            default:
+                return 0;
         }
     }
 

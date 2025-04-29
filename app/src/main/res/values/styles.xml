@@ -1,5 +1,5 @@
 <resources>
-    <!-- Base theme -->
+    <!-- cores-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,7 +9,7 @@
         <item name="android:textColorSecondary">@color/textSecondary</item>
     </style>
 
-    <!-- Style for cards -->
+    <!-- cards -->
     <style name="HealthCard" parent="CardView">
         <item name="cardBackgroundColor">@color/cardBackground</item>
         <item name="cardCornerRadius">8dp</item>
@@ -17,7 +17,7 @@
         <item name="contentPadding">16dp</item>
     </style>
 
-    <!-- Style for buttons -->
+    <!-- botoes -->
     <style name="HealthButton" parent="Widget.AppCompat.Button.Colored">
         <item name="android:textColor">@color/buttonText</item>
         <item name="android:background">@drawable/button_health_selector</item>
@@ -25,4 +25,12 @@
         <item name="android:minHeight">48dp</item>
         <item name="android:padding">12dp</item>
     </style>
+
+    <!-- valores spinner -->
+    <string-array name="sexo_array">
+        <item>M</item>
+        <item>F</item>
+    </string-array>
+
+
 </resources>
