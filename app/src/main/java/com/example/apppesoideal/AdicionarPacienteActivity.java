@@ -2,6 +2,8 @@ package com.example.apppesoideal;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,7 +24,8 @@ public class AdicionarPacienteActivity extends AppCompatActivity {
         EditText editPeso = findViewById(R.id.editTextPeso);
         Button btnSalvar = findViewById(R.id.btnSalvarPaciente);
         Spinner spinnerSexo = findViewById(R.id.spinnerSexo);
-        
+        findViewById(R.id.btnVoltar).setOnClickListener(v -> finish());
+
 
         btnSalvar.setOnClickListener(v -> {
             String nome = editNome.getText().toString().trim();
@@ -50,8 +53,10 @@ public class AdicionarPacienteActivity extends AppCompatActivity {
             long newRowId = db.insert("paciente", null, values);
             if (newRowId != -1) {
                 Toast.makeText(this, "Paciente salvo com sucesso!", Toast.LENGTH_SHORT).show();
+                Log.w("teste insert", "testando insert");
                 finish();
             } else {
+                Log.w("teste insert", "testando insert deu errado");
                 Toast.makeText(this, "Erro ao salvar paciente", Toast.LENGTH_SHORT).show();
             }
         });

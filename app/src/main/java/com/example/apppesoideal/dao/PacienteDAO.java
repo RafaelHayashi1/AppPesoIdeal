@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.apppesoideal.db.DBHelper;
 import com.example.apppesoideal.modelos.Paciente;
@@ -48,6 +49,7 @@ public class PacienteDAO {
                 "nome=? AND sexo=? AND altura=? AND peso=?",
                 new String[]{nome, sexo, String.valueOf(altura), String.valueOf(peso)}
         );
+        Log.w("teste delete", "deletado com sucesso");
         return apagados > 0;
     }
 
@@ -72,6 +74,7 @@ public class PacienteDAO {
             lista.add(p);
             dados.moveToNext();
         }
+        Log.w("teste lista", "dwadwadawdwadwadwadawdwadwadwadawdwa");
         return lista;
     }
 }

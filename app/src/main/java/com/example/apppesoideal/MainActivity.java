@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         pacientes = new ArrayList<>(pacienteDAO.ListarPacientes());
 
-        adapter = new AdaptadorPaciente(this, R.layout.item_paciente, pacientes);
+        adapter = new AdaptadorPaciente(this, R.layout.card_paciente, pacientes);
         ListView listView = findViewById(R.id.listViewPacientes);
         listView.setAdapter(adapter);
 

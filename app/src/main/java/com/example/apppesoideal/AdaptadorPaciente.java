@@ -14,18 +14,18 @@ import java.util.List;
 
 public class AdaptadorPaciente extends ArrayAdapter<Paciente> {
     
-    private int layoutPaciente ;
+    private int resourceLayout;
 
     public AdaptadorPaciente(Context context, int resource, List<Paciente> items) {
         super(context, resource, items);
-        this.layoutPaciente  = resource;
+        this.resourceLayout = resource;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext())
-                    .inflate(layoutPaciente , parent, false);
+                    .inflate(resourceLayout, parent, false);
         }
 
         Paciente paciente = getItem(position);

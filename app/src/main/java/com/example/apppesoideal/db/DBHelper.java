@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
                           int newVersion) {
         Log.w("Atualizacao de BD", "V.Antiga: " +
                 oldVersion + " - V.Nova: " + newVersion);
-        db.execSQL("drop table if exists contatinhos");
+        db.execSQL("drop table if exists paciente");
 
         onCreate(db);
 
